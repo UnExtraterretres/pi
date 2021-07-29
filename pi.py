@@ -1,4 +1,5 @@
 from datetime import datetime
+import time
 import decimal
 
 
@@ -20,10 +21,12 @@ def calc_pi():
             t = dec(4)
             open("log.txt", "a").write("s.txt t.txt FileNotFoundError\n")
 
+        calculation_time = time.time()
         while s != t:
             t = dec((2*s*t)/(s+t))
             s = dec.sqrt(s*t)
-        open("log.txt", "a").write("calculations completed\n")
+        open("log.txt", "a").write(f"calculations completed : {time.time()-calculation_time}sec\n")
+        open("log.txt", "a").write(f"precision = {precision}\n")
 
         open("s.txt", "w").write(str(s))
         open("log.txt", "a").write("s saved in s.txt\n")
