@@ -37,14 +37,17 @@ def calc_pi():
         open("precision.txt", "w").write(str(precision))
         open("log.txt", "a").write("precision saved in precision.txt\n")
 
+    open("log.txt", "a").write(f"{datetime.now()}\n")
+
     try:
+        open("log.txt", "a").write("precision.txt loaded\n")
         pi(precision=int(open("precision.txt", "r").read())+100)
     except FileNotFoundError:
         open("log.txt", "a").write("precision.txt FileNotFoundError\n")
         pi()
 
+    open("log.txt", "a").write("\n")
+
 
 if __name__ == "__main__":
-    open("log.txt", "a").write(f"{datetime.now()}\n")
     calc_pi()
-    open("log.txt", "a").write("\n")
